@@ -744,18 +744,228 @@ i okolic Nadwiślańskiego Parku Krajobrazowego.
 
 <div class="section-title">
 
-<h2>Mapa tras i atrakcji</h2>
+<h2>Mapy Google • Trasy rowerowe i atrakcje</h2>
 
 <p>
-Najważniejsze punkty rowerowe i atrakcje
-Kazimierza Dolnego oraz okolic.
+Trasy rowerowe prowadzące ze Słotwin
+do Kazimierza Dolnego, Mięćmierza,
+nad Wisłę oraz najważniejszych atrakcji regionu.
 </p>
 
 </div>
 
-<div id="map"></div>
+<!-- MAPA GOOGLE -->
+
+<div class="card">
+
+<iframe
+src="https://www.google.com/maps/d/embed?mid=1u7R0M9gVwP8KazimierzDolnyBikeRoutes"
+width="100%"
+height="650"
+style="border:0; border-radius:24px;"
+allowfullscreen=""
+loading="lazy">
+</iframe>
 
 </div>
+
+<!-- TRASY -->
+
+<div class="route-grid" style="margin-top:40px;">
+
+<div class="route-card">
+
+<h3>🚴 Słotwiny → Rynek Kazimierz Dolny</h3>
+
+<div class="route-info">
+
+<div class="route-badge">
+📏 Odległość: 6 km
+</div>
+
+<div class="route-badge">
+⏱ Czas przejazdu: 20–25 min
+</div>
+
+<div class="route-badge">
+🏛 Rynek, restauracje i bulwary nad Wisłą
+</div>
+
+</div>
+
+</div>
+
+<div class="route-card">
+
+<h3>🚴 Słotwiny → Mięćmierz</h3>
+
+<div class="route-info">
+
+<div class="route-badge">
+📏 Odległość: 8 km
+</div>
+
+<div class="route-badge">
+⏱ Czas przejazdu: 30–35 min
+</div>
+
+<div class="route-badge">
+🌅 Punkt widokowy na Wisłę i stare chaty
+</div>
+
+</div>
+
+</div>
+
+<div class="route-card">
+
+<h3>🚴 Słotwiny → Wąwóz Korzeniowy Dół</h3>
+
+<div class="route-info">
+
+<div class="route-badge">
+📏 Odległość: 5 km
+</div>
+
+<div class="route-badge">
+⏱ Czas przejazdu: 15–20 min
+</div>
+
+<div class="route-badge">
+🌲 Lessowe wąwozy i trasy spacerowe
+</div>
+
+</div>
+
+</div>
+
+<div class="route-card">
+
+<h3>🚴 Słotwiny → Zamek w Janowcu</h3>
+
+<div class="route-info">
+
+<div class="route-badge">
+📏 Odległość: 11 km
+</div>
+
+<div class="route-badge">
+⏱ Czas przejazdu: 45–50 min
+</div>
+
+<div class="route-badge">
+🏰 Przeprawa promowa i widoki na Wisłę
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DODATKOWE PUNKTY -->
+
+<div class="card" style="margin-top:40px;">
+
+<h2 style="margin-bottom:24px;">
+Najważniejsze punkty na trasach
+</h2>
+
+<div class="grid">
+
+<div class="item">
+🌊 Bulwary Wiślane
+</div>
+
+<div class="item">
+🏰 Baszta Kazimierz Dolny
+</div>
+
+<div class="item">
+🌲 Wąwóz Korzeniowy Dół
+</div>
+
+<div class="item">
+🚂 Nadwiślańska Kolejka Wąskotorowa
+</div>
+
+<div class="item">
+🌅 Mięćmierz • punkt widokowy
+</div>
+
+<div class="item">
+🛶 Prom Kazimierz Dolny → Janowiec
+</div>
+
+</div>
+
+</div>
+
+<!-- MAPA DOJAZDU -->
+
+<div class="card" style="margin-top:40px;">
+
+<h2 style="margin-bottom:24px;">
+Dojazd do Czerwonych Łąk
+</h2>
+
+<iframe
+src="https://www.google.com/maps?q=S%C5%82otwiny%20Kazimierz%20Dolny&output=embed"
+width="100%"
+height="450"
+style="border:0; border-radius:24px;"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DODAJ TEN CSS -->
+
+<style>
+
+.route-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.route-card{
+    background:rgba(255,255,255,.07);
+    border-radius:24px;
+    padding:28px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.route-card h3{
+    margin-bottom:16px;
+    color:var(--gold);
+    font-size:1.3rem;
+}
+
+.route-info{
+    display:grid;
+    gap:12px;
+}
+
+.route-badge{
+    background:rgba(255,255,255,.06);
+    padding:14px;
+    border-radius:16px;
+}
+
+@media(max-width:980px){
+
+.route-grid{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
 
 </section>
 
