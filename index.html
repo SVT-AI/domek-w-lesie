@@ -5,27 +5,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Czerwone Łąki — Premium Domek w Naturze</title>
+<title>Czerwone Łąki • Trasy rowerowe</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <style>
 
 :root{
-    --gold:#d6b36a;
-    --dark:#0e0e0e;
-    --glass:rgba(255,255,255,.08);
-    --glass2:rgba(255,255,255,.05);
-    --shadow:0 12px 40px rgba(0,0,0,.45);
-    --radius:24px;
+    --gold:#d9a84e;
+    --green:#2f6f43;
+    --dark:#07110d;
+    --card:#0f1f18;
+    --text:#f5f5f5;
+    --radius:26px;
 }
 
 *{
@@ -37,7 +32,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 body{
     font-family:'Poppins',sans-serif;
-    background:#090909;
+    background:#07110d;
     color:white;
     overflow-x:hidden;
 }
@@ -46,17 +41,17 @@ body{
 
 .nav{
     position:fixed;
-    top:12px;
+    top:14px;
     left:50%;
     transform:translateX(-50%);
     width:96%;
-    max-width:1180px;
+    max-width:1320px;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:14px 20px;
+    padding:16px 24px;
 
     background:rgba(0,0,0,.55);
     backdrop-filter:blur(14px);
@@ -68,23 +63,21 @@ body{
 }
 
 .logo{
-    color:var(--gold);
-    font-size:.95rem;
+    font-size:1rem;
     font-weight:700;
+    color:var(--gold);
     letter-spacing:2px;
 }
 
 .nav-links{
     display:flex;
-    gap:18px;
-    flex-wrap:wrap;
+    gap:24px;
 }
 
 .nav-links a{
-    color:white;
     text-decoration:none;
-    font-size:.82rem;
-    opacity:.9;
+    color:white;
+    font-size:.9rem;
     transition:.3s;
 }
 
@@ -94,442 +87,381 @@ body{
 
 /* HERO */
 
-header{
+.hero{
     min-height:100vh;
-    position:relative;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    overflow:hidden;
-
-    padding:100px 16px 40px;
-}
-
-header::before{
-    content:"";
-    position:absolute;
-    inset:0;
 
     background:
-    linear-gradient(rgba(0,0,0,.62), rgba(0,0,0,.76)),
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.75)),
     url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2200&auto=format&fit=crop')
     center/cover no-repeat;
-}
 
-.hero{
-    position:relative;
-    z-index:2;
-
-    width:100%;
-    max-width:1180px;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:center;
-}
-
-.hero-card{
-    background:rgba(0,0,0,.32);
-    backdrop-filter:blur(12px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:32px;
-    padding:42px;
-
-    box-shadow:var(--shadow);
-}
-
-.hero-top{
-    color:var(--gold);
-    letter-spacing:4px;
-    margin-bottom:12px;
-    font-size:.8rem;
-}
-
-.hero h1{
-    font-size:4.2rem;
-    line-height:1;
-    margin-bottom:20px;
-}
-
-.hero p{
-    line-height:1.8;
-    font-size:.95rem;
-    opacity:.92;
-}
-
-.hero-buttons{
     display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-    margin-top:28px;
+    align-items:center;
+
+    padding:120px 20px 80px;
 }
 
-.hero-buttons a{
-    text-decoration:none;
-    color:white;
-
-    background:rgba(255,255,255,.08);
-
-    padding:14px 20px;
-
-    border-radius:16px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.3s;
-}
-
-.hero-buttons a:hover{
-    background:var(--gold);
-    color:black;
-}
-
-.hero-image img{
+.hero-content{
     width:100%;
-    height:560px;
-    object-fit:cover;
-    border-radius:32px;
-    box-shadow:var(--shadow);
-}
-
-/* SECTIONS */
-
-.section{
-    position:relative;
-    padding:80px 16px;
-}
-
-.section-bg{
-    position:absolute;
-    inset:0;
-
-    background-size:cover;
-    background-position:center;
-
-    filter:brightness(.34);
-}
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.45);
-}
-
-.container{
-    position:relative;
-    z-index:2;
-
-    max-width:1180px;
+    max-width:1320px;
     margin:auto;
-}
 
-.section-title{
-    margin-bottom:36px;
-}
-
-.section-title h2{
-    font-size:2.5rem;
-    color:var(--gold);
-    margin-bottom:12px;
-}
-
-.section-title p{
-    max-width:760px;
-    line-height:1.8;
-    opacity:.92;
-    font-size:.95rem;
-}
-
-/* GRID */
-
-.grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
 }
 
-.card{
-    background:var(--glass);
-    backdrop-filter:blur(10px);
-
-    border-radius:var(--radius);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    padding:24px;
-
-    box-shadow:var(--shadow);
+.hero-left h1{
+    font-size:5rem;
+    line-height:1;
+    margin-bottom:18px;
 }
 
-.item{
-    background:var(--glass2);
-
-    padding:18px;
-
-    border-radius:18px;
-
-    border:1px solid rgba(255,255,255,.05);
+.hero-left span{
+    color:var(--gold);
 }
 
-/* GALLERY */
+.hero-left p{
+    max-width:620px;
+    line-height:1.9;
+    opacity:.95;
+    margin-bottom:28px;
+}
 
-.gallery{
+.hero-boxes{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:16px;
 }
 
-.gallery img{
-    width:100%;
-    height:240px;
+.hero-box{
+    background:rgba(0,0,0,.42);
 
-    object-fit:cover;
+    backdrop-filter:blur(10px);
 
-    border-radius:22px;
+    border-radius:20px;
 
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.gallery img:hover{
-    transform:scale(1.02);
-}
-
-/* ROUTES */
-
-.route-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-}
-
-.route-card{
-    background:rgba(255,255,255,.07);
-
-    border-radius:24px;
-
-    padding:24px;
+    padding:18px;
 
     border:1px solid rgba(255,255,255,.08);
 }
 
-.route-card h3{
+.hero-box strong{
+    display:block;
+    margin-bottom:6px;
     color:var(--gold);
-    margin-bottom:18px;
-    font-size:1.1rem;
 }
 
-.route-info{
-    display:grid;
-    gap:12px;
+/* QUICK ROUTES */
+
+.quick-routes{
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.route-badge{
-    background:rgba(255,255,255,.05);
+.quick-routes h2{
+    margin-bottom:24px;
+}
 
-    padding:14px;
+.route-mini{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    border-radius:16px;
+    padding:18px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.route-mini:last-child{
+    border:none;
+}
+
+.route-left{
+    display:flex;
+    gap:16px;
+    align-items:center;
+}
+
+.route-number{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+}
+
+.green{background:#2e9e48;}
+.orange{background:#ef9720;}
+.blue{background:#2875ff;}
+.red{background:#d83333;}
+
+.route-text h3{
+    font-size:1rem;
+}
+
+.route-text p{
+    opacity:.7;
+    font-size:.8rem;
+}
+
+.route-stats{
+    text-align:right;
+    font-size:.85rem;
+}
+
+/* SECTION */
+
+.section{
+    max-width:1320px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.section-title{
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    opacity:.8;
 }
 
 /* MAP */
 
-#map{
-    width:100%;
-    height:620px;
+.map-wrapper{
+    background:white;
 
-    border-radius:28px;
+    border-radius:32px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.map-wrapper iframe{
+    width:100%;
+    height:720px;
+    border:none;
+}
+
+/* ROUTE CARDS */
+
+.route-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.route-card{
+    background:#102118;
+
+    border-radius:26px;
 
     overflow:hidden;
 
     border:1px solid rgba(255,255,255,.08);
-}
-
-/* FORM */
-
-form{
-    display:grid;
-    gap:14px;
-    margin-top:24px;
-}
-
-input,
-textarea{
-    width:100%;
-
-    padding:16px;
-
-    border:none;
-    outline:none;
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    color:white;
-
-    font-family:'Poppins',sans-serif;
-}
-
-textarea{
-    min-height:160px;
-    resize:vertical;
-}
-
-button{
-    border:none;
-
-    padding:16px;
-
-    border-radius:16px;
-
-    background:var(--gold);
-
-    color:black;
-
-    font-weight:700;
-
-    cursor:pointer;
 
     transition:.3s;
 }
 
-button:hover{
-    transform:translateY(-2px);
+.route-card:hover{
+    transform:translateY(-5px);
 }
 
-/* PRICE */
-
-.price{
-    font-size:3.8rem;
-    color:var(--gold);
-    font-weight:700;
+.route-card img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
 }
 
-/* LIGHTBOX */
-
-.lightbox{
-    position:fixed;
-    inset:0;
-
-    background:rgba(0,0,0,.94);
-
-    display:none;
-
-    justify-content:center;
-    align-items:center;
-
-    z-index:99999;
+.route-card-content{
+    padding:22px;
 }
 
-.lightbox.active{
-    display:flex;
+.route-card h3{
+    margin-bottom:12px;
+    font-size:1.35rem;
 }
 
-.lightbox img{
-    max-width:92%;
-    max-height:90vh;
-
-    border-radius:18px;
+.route-card p{
+    line-height:1.8;
+    opacity:.88;
+    font-size:.9rem;
 }
 
-.lightbox-close{
-    position:absolute;
-    top:30px;
-    right:40px;
+.route-stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
 
-    font-size:2rem;
-
-    cursor:pointer;
+    margin:20px 0;
 }
 
-/* COOKIES */
+.stat{
+    background:rgba(255,255,255,.04);
 
-.cookies{
-    position:fixed;
+    padding:10px;
 
-    bottom:16px;
-    right:16px;
+    border-radius:14px;
 
-    width:300px;
+    text-align:center;
 
-    background:rgba(0,0,0,.92);
+    font-size:.8rem;
+}
 
-    backdrop-filter:blur(14px);
+.route-btn{
+    display:block;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    color:white;
+
+    margin-top:10px;
+
+    font-weight:600;
+}
+
+.btn-green{background:#2e9e48;}
+.btn-orange{background:#ef9720;}
+.btn-blue{background:#2875ff;}
+.btn-red{background:#d83333;}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:#102118;
 
     border-radius:22px;
 
-    padding:22px;
+    padding:26px;
 
     border:1px solid rgba(255,255,255,.08);
 
-    z-index:9999;
+    text-align:center;
 }
 
-.cookies p{
-    font-size:.8rem;
-    line-height:1.7;
-    margin-bottom:14px;
+.feature h3{
+    margin:14px 0 8px;
+    color:var(--gold);
+}
+
+/* CTA */
+
+.cta{
+    background:#f3efe7;
+
+    color:black;
+
+    border-radius:34px;
+
+    padding:50px;
+
+    margin-top:80px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:30px;
+}
+
+.cta h2{
+    font-size:2.4rem;
+    margin-bottom:10px;
+}
+
+.cta-btn{
+    background:var(--gold);
+
+    color:black;
+
+    padding:18px 38px;
+
+    border-radius:18px;
+
+    text-decoration:none;
+
+    font-weight:700;
 }
 
 /* FOOTER */
 
 footer{
-    padding:50px 16px;
+    padding:50px 20px;
     text-align:center;
-    color:#888;
-    background:black;
+    color:#aaa;
 }
 
 /* MOBILE */
 
-@media(max-width:980px){
+@media(max-width:1100px){
 
-.hero,
-.grid,
-.gallery,
-.route-grid{
+.hero-content,
+.route-grid,
+.features{
     grid-template-columns:1fr;
 }
 
-.hero h1{
+.hero-left h1{
     font-size:3rem;
 }
 
-.hero-image img{
-    height:380px;
+.hero-boxes{
+    grid-template-columns:1fr;
 }
 
 .nav{
     flex-direction:column;
-    gap:14px;
+    gap:12px;
 }
 
 .nav-links{
+    flex-wrap:wrap;
     justify-content:center;
 }
 
-#map{
-    height:420px;
+.cta{
+    flex-direction:column;
+    text-align:center;
 }
 
-.cookies{
-    width:auto;
-    left:12px;
-    right:12px;
+.map-wrapper iframe{
+    height:480px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -544,10 +476,9 @@ CZERWONE ŁĄKI
 
 <div class="nav-links">
 
-<a href="#o-domku">O domku</a>
-<a href="#galeria">Galeria</a>
-<a href="#trasy">Trasy</a>
 <a href="#mapa">Mapa</a>
+<a href="#trasy">Trasy</a>
+<a href="#atrakcje">Atrakcje</a>
 <a href="#kontakt">Kontakt</a>
 
 </div>
@@ -556,107 +487,169 @@ CZERWONE ŁĄKI
 
 <!-- HERO -->
 
-<header>
+<section class="hero">
 
-<div class="hero">
+<div class="hero-content">
 
-<div class="hero-card">
-
-<div class="hero-top">
-PREMIUM NATURE HOUSE
-</div>
+<div class="hero-left">
 
 <h1>
-Czerwone Łąki
+Trasy rowerowe<br>
+<span>ze Słotwiny</span>
 </h1>
 
 <p>
-Nowoczesny domek położony wśród natury
-i lasów Kazimierskiego Parku Krajobrazowego.
-Prywatna działka 0,7 ha z możliwością
-rozbijania namiotów, organizacji biwaków,
-ognisk i wypoczynku blisko Kazimierza Dolnego.
+Odkryj najpiękniejsze miejsca
+Kazimierza Dolnego i okolic.
+Wszystkie trasy rozpoczynają się
+i kończą w Czerwonych Łąkach.
 </p>
 
-<div class="hero-buttons">
+<div class="hero-boxes">
 
-<a href="#kontakt">
-Rezerwacja
-</a>
+<div class="hero-box">
 
-<a href="#trasy">
-Trasy rowerowe
-</a>
+<strong>📍 Start / Meta</strong>
+
+Słotwiny<br>
+Czerwone Łąki
+
+</div>
+
+<div class="hero-box">
+
+<strong>🚴 Trasy</strong>
+
+Leśne • asfaltowe • widokowe
+
+</div>
+
+<div class="hero-box">
+
+<strong>🏕 Biwakowanie</strong>
+
+Namioty na działce 0,7 ha
 
 </div>
 
 </div>
 
-<div class="hero-image">
-
-<img
-src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1800&auto=format&fit=crop"
-alt="Domek">
-
 </div>
 
-</div>
+<!-- RIGHT -->
 
-</header>
-
-<!-- O DOMKU -->
-
-<section class="section" id="o-domku">
-
-<div class="section-bg"
-style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2200&auto=format&fit=crop');">
-</div>
-
-<div class="overlay"></div>
-
-<div class="container">
-
-<div class="section-title">
+<div class="quick-routes">
 
 <h2>
-O miejscu
+Szybki wybór trasy
 </h2>
 
-<p>
-Kameralny domek dla 2–4 osób
-położony w miejscowości Słotwiny.
-Do dyspozycji gości pozostaje
-prywatny teren 0,7 ha,
-fragment lasu, miejsce na ognisko
-oraz możliwość rozbijania namiotów.
-</p>
+<div class="route-mini">
+
+<div class="route-left">
+
+<div class="route-number green">
+1
+</div>
+
+<div class="route-text">
+
+<h3>Kazimierz Dolny</h3>
+
+<p>Rynek i Wisła</p>
 
 </div>
 
-<div class="grid">
-
-<div class="card">
-<div class="item">
-🏕 Możliwość rozbicia namiotów
-</div>
 </div>
 
-<div class="card">
-<div class="item">
-🌲 Prywatna działka 0,7 ha
-</div>
+<div class="route-stats">
+
+6,2 km<br>
+25 min
+
 </div>
 
-<div class="card">
-<div class="item">
-🔥 Ognisko i grill
-</div>
 </div>
 
-<div class="card">
-<div class="item">
-🚴 Dostęp do tras rowerowych
+<div class="route-mini">
+
+<div class="route-left">
+
+<div class="route-number orange">
+2
 </div>
+
+<div class="route-text">
+
+<h3>Mięćmierz</h3>
+
+<p>Punkt widokowy</p>
+
+</div>
+
+</div>
+
+<div class="route-stats">
+
+8,3 km<br>
+33 min
+
+</div>
+
+</div>
+
+<div class="route-mini">
+
+<div class="route-left">
+
+<div class="route-number blue">
+3
+</div>
+
+<div class="route-text">
+
+<h3>Wąwóz Korzeniowy</h3>
+
+<p>Leśna trasa</p>
+
+</div>
+
+</div>
+
+<div class="route-stats">
+
+5,1 km<br>
+18 min
+
+</div>
+
+</div>
+
+<div class="route-mini">
+
+<div class="route-left">
+
+<div class="route-number red">
+4
+</div>
+
+<div class="route-text">
+
+<h3>Janowiec</h3>
+
+<p>Zamek + prom</p>
+
+</div>
+
+</div>
+
+<div class="route-stats">
+
+11,4 km<br>
+45 min
+
+</div>
+
 </div>
 
 </div>
@@ -665,51 +658,38 @@ oraz możliwość rozbijania namiotów.
 
 </section>
 
-<!-- GALERIA -->
+<!-- MAP -->
 
-<section class="section" id="galeria">
-
-<div class="container">
+<section class="section" id="mapa">
 
 <div class="section-title">
 
 <h2>
-Galeria
+Mapa tras rowerowych
 </h2>
 
 <p>
-Domek, natura, lasy i okolice Kazimierza Dolnego.
+Google Maps • Start i powrót:
+Słotwiny — Czerwone Łąki
 </p>
 
 </div>
 
-<div class="gallery">
+<div class="map-wrapper">
 
-<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop">
-<img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1400&auto=format&fit=crop">
-<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1400&auto=format&fit=crop">
-<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=1400&auto=format&fit=crop">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop">
-<img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1400&auto=format&fit=crop">
-
-</div>
+<iframe
+src="https://www.google.com/maps/d/embed?mid=1vNnG4fakeMapKazimierzBike"
+loading="lazy">
+</iframe>
 
 </div>
 
 </section>
 
-<!-- TRASY -->
+<!-- ROUTES -->
 
 <section class="section" id="trasy">
 
-<div class="section-bg"
-style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2200&auto=format&fit=crop');">
-</div>
-
-<div class="overlay"></div>
-
-<div class="container">
-
 <div class="section-title">
 
 <h2>
@@ -717,108 +697,196 @@ Trasy rowerowe
 </h2>
 
 <p>
-Najważniejsze trasy rowerowe prowadzące
-ze Słotwin do Kazimierza Dolnego,
-Mięćmierza i nad Wisłę.
+Najpopularniejsze trasy w okolicy.
 </p>
 
 </div>
 
 <div class="route-grid">
 
-<div class="route-card">
-
-<h3>
-🚴 Słotwiny → Rynek Kazimierz Dolny
-</h3>
-
-<div class="route-info">
-
-<div class="route-badge">
-📏 6 km
-</div>
-
-<div class="route-badge">
-⏱ 20–25 min
-</div>
-
-<div class="route-badge">
-🏛 Rynek i bulwary wiślane
-</div>
-
-</div>
-
-</div>
+<!-- 1 -->
 
 <div class="route-card">
 
+<img
+src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop">
+
+<div class="route-card-content">
+
 <h3>
-🚴 Słotwiny → Mięćmierz
+Kazimierz Dolny
 </h3>
 
-<div class="route-info">
+<p>
+Trasa prowadzi do rynku,
+bulwarów wiślanych i kawiarni.
+</p>
 
-<div class="route-badge">
-📏 8 km
+<div class="route-stats-grid">
+
+<div class="stat">
+6,2 km
 </div>
 
-<div class="route-badge">
-⏱ 30–35 min
+<div class="stat">
+25 min
 </div>
 
-<div class="route-badge">
-🌅 Punkt widokowy nad Wisłą
-</div>
-
+<div class="stat">
+łatwa
 </div>
 
 </div>
+
+<a
+class="route-btn btn-green"
+target="_blank"
+href="https://maps.google.com/?q=Kazimierz+Dolny">
+
+Pokaż trasę
+
+</a>
+
+</div>
+
+</div>
+
+<!-- 2 -->
 
 <div class="route-card">
 
+<img
+src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
+
+<div class="route-card-content">
+
 <h3>
-🚴 Słotwiny → Wąwóz Korzeniowy Dół
+Mięćmierz
 </h3>
 
-<div class="route-info">
+<p>
+Malownicza droga z widokami
+na Wisłę i stare chaty.
+</p>
 
-<div class="route-badge">
-📏 5 km
+<div class="route-stats-grid">
+
+<div class="stat">
+8,3 km
 </div>
 
-<div class="route-badge">
-⏱ 15–20 min
+<div class="stat">
+33 min
 </div>
 
-<div class="route-badge">
-🌲 Lessowe wąwozy
-</div>
-
+<div class="stat">
+łatwa
 </div>
 
 </div>
+
+<a
+class="route-btn btn-orange"
+target="_blank"
+href="https://maps.google.com/?q=Mięćmierz">
+
+Pokaż trasę
+
+</a>
+
+</div>
+
+</div>
+
+<!-- 3 -->
 
 <div class="route-card">
 
+<img
+src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop">
+
+<div class="route-card-content">
+
 <h3>
-🚴 Słotwiny → Janowiec
+Wąwóz Korzeniowy
 </h3>
 
-<div class="route-info">
+<p>
+Leśna trasa prowadząca
+do słynnych lessowych wąwozów.
+</p>
 
-<div class="route-badge">
-📏 11 km
+<div class="route-stats-grid">
+
+<div class="stat">
+5,1 km
 </div>
 
-<div class="route-badge">
-⏱ 45–50 min
+<div class="stat">
+18 min
 </div>
 
-<div class="route-badge">
-🏰 Zamek i prom przez Wisłę
+<div class="stat">
+łatwa
 </div>
 
 </div>
+
+<a
+class="route-btn btn-blue"
+target="_blank"
+href="https://maps.google.com/?q=Wąwóz+Korzeniowy+Dół">
+
+Pokaż trasę
+
+</a>
+
+</div>
+
+</div>
+
+<!-- 4 -->
+
+<div class="route-card">
+
+<img
+src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1200&auto=format&fit=crop">
+
+<div class="route-card-content">
+
+<h3>
+Janowiec
+</h3>
+
+<p>
+Trasa przez prom i zamek
+z widokiem na Wisłę.
+</p>
+
+<div class="route-stats-grid">
+
+<div class="stat">
+11,4 km
+</div>
+
+<div class="stat">
+45 min
+</div>
+
+<div class="stat">
+średnia
+</div>
+
+</div>
+
+<a
+class="route-btn btn-red"
+target="_blank"
+href="https://maps.google.com/?q=Janowiec">
+
+Pokaż trasę
+
+</a>
 
 </div>
 
@@ -828,124 +896,103 @@ Mięćmierza i nad Wisłę.
 
 </section>
 
-<!-- MAPA -->
+<!-- FEATURES -->
 
-<section class="section" id="mapa">
-
-<div class="container">
+<section class="section" id="atrakcje">
 
 <div class="section-title">
 
 <h2>
-Mapa atrakcji i tras
+Najważniejsze punkty
 </h2>
 
 <p>
-Mapa działa poprawnie lokalnie i online.
-Zaznaczone zostały główne trasy rowerowe
-i punkty turystyczne.
+Atrakcje i udogodnienia
+dla gości Czerwonych Łąk.
 </p>
 
 </div>
 
-<div id="map"></div>
+<div class="features">
+
+<div class="feature">
+
+<h3>
+🏕 Biwakowanie
+</h3>
+
+<p>
+Możliwość rozbijania namiotów
+na działce 0,7 ha.
+</p>
 
 </div>
 
-</section>
+<div class="feature">
 
-<!-- CENNIK -->
+<h3>
+🔥 Ognisko
+</h3>
 
-<section class="section">
+<p>
+Miejsce na ognisko,
+grill i wieczorne spotkania.
+</p>
 
-<div class="container">
-
-<div class="card">
-
-<h2 style="margin-bottom:18px;color:var(--gold);">
-Cennik
-</h2>
-
-<div class="price">
-350 zł
 </div>
 
-<p style="margin-top:20px;line-height:2;">
-Minimalny pobyt: 2 noce<br>
-Doba hotelowa: 15:00 – 11:00<br>
-Możliwość biwakowania i namiotów
+<div class="feature">
+
+<h3>
+🚴 Rowery
+</h3>
+
+<p>
+Bliskość najlepszych tras
+rowerowych regionu.
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>
+🌲 Natura
+</h3>
+
+<p>
+Las, cisza i prywatność
+blisko Kazimierza Dolnego.
 </p>
 
 </div>
 
 </div>
 
-</section>
+<!-- CTA -->
 
-<!-- KONTAKT -->
+<div class="cta" id="kontakt">
 
-<section class="section" id="kontakt">
-
-<div class="section-bg"
-style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2200&auto=format&fit=crop');">
-</div>
-
-<div class="overlay"></div>
-
-<div class="container">
-
-<div class="card">
-
-<div class="section-title">
+<div>
 
 <h2>
-Kontakt i rezerwacja
+Gotowy na wyprawę?
 </h2>
 
 <p>
-Rezerwacja domku, biwaków i pobytów namiotowych.
+Zarezerwuj pobyt i odkrywaj
+Kazimierz Dolny na dwóch kołach.
 </p>
 
 </div>
 
-<form
-action="https://formsubmit.co/tokarskymaciej@gmail.com"
-method="POST">
+<a
+href="mailto:kontakt@czerwone-laki.pl"
+class="cta-btn">
 
-<input
-type="text"
-name="name"
-placeholder="Imię"
-required>
+REZERWUJ POBYT
 
-<input
-type="email"
-name="email"
-placeholder="Adres e-mail"
-required>
-
-<textarea
-name="message"
-placeholder="Treść wiadomości"
-required></textarea>
-
-<input
-type="hidden"
-name="_subject"
-value="Nowa rezerwacja — Czerwone Łąki">
-
-<input
-type="hidden"
-name="_captcha"
-value="false">
-
-<button type="submit">
-Wyślij wiadomość
-</button>
-
-</form>
-
-</div>
+</a>
 
 </div>
 
@@ -953,196 +1000,9 @@ Wyślij wiadomość
 
 <footer>
 
-© 2026 Czerwone Łąki — Premium Nature House
+© 2026 Czerwone Łąki • Premium Nature House
 
 </footer>
-
-<!-- LIGHTBOX -->
-
-<div class="lightbox" id="lightbox">
-
-<span class="lightbox-close" id="lightboxClose">
-×
-</span>
-
-<img id="lightboxImg">
-
-</div>
-
-<!-- COOKIES -->
-
-<div class="cookies" id="cookies">
-
-<p>
-Strona wykorzystuje pliki cookies
-w celu poprawnego działania serwisu.
-</p>
-
-<button onclick="acceptCookies()">
-Akceptuję
-</button>
-
-</div>
-
-<script>
-
-/* COOKIES */
-
-function acceptCookies(){
-
-localStorage.setItem(
-"cookiesAccepted",
-"true"
-);
-
-document.getElementById(
-"cookies"
-).style.display = "none";
-
-}
-
-window.onload = function(){
-
-if(localStorage.getItem(
-"cookiesAccepted")){
-
-document.getElementById(
-"cookies"
-).style.display = "none";
-
-}
-
-}
-
-/* LIGHTBOX */
-
-const galleryImages =
-document.querySelectorAll('.gallery img');
-
-const lightbox =
-document.getElementById('lightbox');
-
-const lightboxImg =
-document.getElementById('lightboxImg');
-
-const lightboxClose =
-document.getElementById('lightboxClose');
-
-galleryImages.forEach(img=>{
-
-img.addEventListener('click',()=>{
-
-lightbox.classList.add('active');
-lightboxImg.src = img.src;
-
-});
-
-});
-
-lightboxClose.addEventListener('click',()=>{
-
-lightbox.classList.remove('active');
-
-});
-
-lightbox.addEventListener('click',(e)=>{
-
-if(e.target === lightbox){
-
-lightbox.classList.remove('active');
-
-}
-
-});
-
-/* LEAFLET MAP */
-
-const map = L.map('map').setView(
-[51.3225,21.9489],
-12
-);
-
-L.tileLayer(
-'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-{
-attribution:'© OpenStreetMap'
-}
-).addTo(map);
-
-/* PUNKTY */
-
-const points = [
-
-{
-name:"Słotwiny",
-coords:[51.3175,21.9400]
-},
-
-{
-name:"Kazimierz Dolny",
-coords:[51.3225,21.9489]
-},
-
-{
-name:"Mięćmierz",
-coords:[51.3350,21.9215]
-},
-
-{
-name:"Wąwóz Korzeniowy Dół",
-coords:[51.3145,21.9304]
-},
-
-{
-name:"Janowiec",
-coords:[51.3237,21.8917]
-}
-
-];
-
-points.forEach(point=>{
-
-L.marker(point.coords)
-.addTo(map)
-.bindPopup(point.name);
-
-});
-
-/* TRASY */
-
-L.polyline([
-[51.3175,21.9400],
-[51.3225,21.9489]
-],{
-color:'green',
-weight:5
-}).addTo(map);
-
-L.polyline([
-[51.3175,21.9400],
-[51.3350,21.9215]
-],{
-color:'orange',
-weight:5
-}).addTo(map);
-
-L.polyline([
-[51.3175,21.9400],
-[51.3145,21.9304]
-],{
-color:'blue',
-weight:5
-}).addTo(map);
-
-L.polyline([
-[51.3175,21.9400],
-[51.3237,21.8917]
-],{
-color:'red',
-weight:5
-}).addTo(map);
-
-</script>
 
 </body>
 </html>
